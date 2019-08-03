@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\tirth\Desktop\Algorithms Practice\queue\queue\main.cpp(14,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\tirth\Desktop\Algorithms Practice\queue\queue\main.cpp(14,20): warning C4018: C:\Users\tirth\Desktop\Algorithms Practice\queue\queue\Queue.h(42) : warning C4172: returning address of local variable or temporary: val
+  queue.vcxproj -> C:\Users\tirth\Desktop\Algorithms Practice\queue\Debug\queue.exe
