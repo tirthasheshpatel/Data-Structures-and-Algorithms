@@ -48,6 +48,8 @@ struct TreeNode* tree_successor(struct TreeNode* node)
     
 }
 
+// Deleting has not been implemented yet! Please come later.
+/*
 void delete_from_binary_tree(struct TreeNode* node)
 {
     if(node->left == 0 && node->right == 0) free(node);
@@ -67,6 +69,7 @@ void delete_from_binary_tree(struct TreeNode* node)
     }
     else if()
 }
+*/
 
 void inorder_transversal(struct TreeNode* node)
 {
