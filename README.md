@@ -34,10 +34,11 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 ## Data Structures Implemented
 <p> All the Data Structures have been implemented in C. The implemented Data Structures are:
   <ol>
-    <li> Stack (fully documented)</li>
+    <li> Stack (fully documented) </li>
     <li> Queue (undocumented) </li>
     <li> Heap (documented) </li>
     <li> Priority Queue (documented) </li>
+    <li> Binary Search Trees (undocumented) </li>
     <li> Doubly Linked List (fully documented) </li>
     <li> Direct Address Tables (undocumented) </li>
     <li> Hash Tables (fully documented) </li>
