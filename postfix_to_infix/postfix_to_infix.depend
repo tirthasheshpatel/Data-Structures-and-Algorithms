@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1564754201 source:c:\users\admin\desktop\my stuffs\intro to also(clrs)'s solution\bubble sort\postfix_to_infix\text.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+
+1564814732 source:c:\users\admin\desktop\my stuffs\intro to also(clrs)'s solution\bubble sort\postfix_to_infix\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<errno.h>
+
