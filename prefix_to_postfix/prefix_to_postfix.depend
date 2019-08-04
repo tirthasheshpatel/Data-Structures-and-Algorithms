@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1564844691 source:c:\users\admin\desktop\my stuffs\intro to also(clrs)'s solution\prefix_to_postfix\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<errno.h>
+
