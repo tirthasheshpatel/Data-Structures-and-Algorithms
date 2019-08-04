@@ -9,7 +9,8 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 
 ## Algorithms Implemented
 <p> Algorithms have been implemented in C++. The algorithms implemented are:
-<ol><li>Insertion Sort.</li>
+<ol>
+  <li>Insertion Sort.</li>
   <li> Heap Sort </li>
   <li> Quick Sort </li>
   <li> Randomized Quick Sort </li>
@@ -19,7 +20,15 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
   <li> Bubble Sort </li>
   <li> Linear Search </li>
   <li> Binary Search </li>
-  <li> Maximum Subarry Problem solved using brute forse, devide and concour and linear methods. </li></ol></p>
+  <li> Maximum Subarry Problem solved using brute forse, devide and concour and linear methods. </li>
+  <li> Infix to Reverse Polish (postfix) using STACK in C</li>
+  <li> Infix to Polish (prefix) using STACK in C</li>
+  <li> Reverse Polish (postfix) to Polish (prefix) using STACK in C</li>
+  <li> Reverse Polish (postfix) to Infix using STACK in C</li>
+  <li> Polish (prefix) to Reverse Polish (postfix) using STACK in C</li>
+  <li> Polish (prefix) to Infix using STACK in C</li>
+</ol>
+</p>
   
 ## Data Structures Implemented
 <p> All the Data Structures have been implemented in C. The implemented Data Structures are:
