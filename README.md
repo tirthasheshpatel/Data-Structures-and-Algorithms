@@ -8,7 +8,7 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 <p><small> Read contributing guidelines in case you want to contribute to this project.</small></p>
 
 ## Algorithms Implemented
-<p> Algorithms have been implemented in C++. The algorithms implemented are:
+<p> Algorithms have been mostly implemented in C++ and partially documented. The algorithms implemented are:
 <ol>
   <li>Insertion Sort.</li>
   <li> Heap Sort </li>
@@ -29,6 +29,7 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
   <li> Polish (prefix) to Infix using STACK in C</li>
 </ol>
 </p>
+<p> All the algorithms will be fully documented and implemented in C soon! </p>
   
 ## Data Structures Implemented
 <p> All the Data Structures have been implemented in C. The implemented Data Structures are:
