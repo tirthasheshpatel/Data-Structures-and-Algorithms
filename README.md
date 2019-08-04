@@ -1,2 +1,38 @@
 # Data-Structures-and-Algorithms
-Fully documented code for Basic Data Structures and Algorithms implemented in C.
+<p>This project is meant to help beginners understand and code Data Structures and Algorithms
+in C. This project strictly follows the book <strong>`Introduction to Algorithms` by Thomas H. Cormen</strong>.
+Any beginners strugling with Data Structures and Algorithms are highly recommended to follow
+the book. Most of the code is documented properly for beginner audiences to understand easily.
+Minimum utilities and libraries are used in case the targeted audience ins't familiar with them.</p>
+<p><h5> This project is still in development stage and needs more contributors. </h5></p>
+<p><small> Read contributing guidelines in case you want to contribute to this project.</small></p>
+
+## Algorithms Implemented
+<p> Algorithms have been implemented in C++. The algorithms implemented are:
+<ol><li>Insertion Sort.</li>
+  <li> Heap Sort </li>
+  <li> Quick Sort </li>
+  <li> Randomized Quick Sort </li>
+  <li> Counting Sort </li>
+  <li> Merge Sort </li>
+  <li> Selection Dort </li>
+  <li> Bubble Sort </li>
+  <li> Linear Search </li>
+  <li> Binary Search </li>
+  <li> Maximum Subarry Problem solved using brute forse, devide and concour and linear methods. </li></ol></p>
+  
+## Data Structures Implemented
+<p> All the Data Structures have been implemented in C. The implemented Data Structures are:
+  <ol>
+    <li> Stack (fully documented)</li>
+    <li> Queue (undocumneted) </li>
+    <li> Heap (documented) </li>
+    <li> Priority Queue (documeneted) </li>
+    <li> Doubly Linked List (fully documented) </li>
+    <li> Direct Address Tables (undocumented) </li>
+    <li> Hash Tables (fully documented) </li>
+  </ol>
+</p>
+
+## Thank you!
+<small> Please read the contributing guidelines if you wist to contribute!</small>
