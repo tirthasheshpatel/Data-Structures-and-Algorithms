@@ -4,30 +4,24 @@
  * All the algorithms from CLRS Section 1 are implemented except Strassen's Algorithm.
  * Sorting algorithms implemented : 1.) Insertion Sort
                                     2.) Heap Sort
-									3.) Quick Sort
-									4.) Randomized Quick Sort
-									5.) Counting Sort
-									6.) Merge Sort
-									7.) Selection Sort
-									8.) Bubble Sort
+				    3.) Quick Sort
+				    4.) Randomized Quick Sort
+				    5.) Counting Sort
+				    6.) Merge Sort
+				    7.) Selection Sort
+				    8.) Bubble Sort
  * Search algorithms impletmented : 1.) Linear Search
                                     2.) Binary Search
  * Generic algorithms implemented : 1.) nrand
                                     2.) swap
-									3.) invertion (brute force)
-									4.) count_invertions (devide and concour)
-									5.) max_subarray_brute_force (brute force)
-									6.) max_subarray (devide and concour)
-									7.) max_subarray_linear (linear method)
-									8.) Inflix to Reverse Polish // Not implemented Yet!
- * Data Structures Implemented    : 1.) Stack
- 									2.) Queue
- 									3.) Heap
- 									4.) Priority Queue
- 									5.) Doubly Linked List
- 									6.) Direct Address Tables
- 									7.) Hash Tables
-									8.) Binary Tree
+				    3.) invertion (brute force)
+			            4.) count_invertions (devide and concour)
+				    5.) max_subarray_brute_force (brute force)
+				    6.) max_subarray (devide and concour)
+				    7.) max_subarray_linear (linear method)
+				    8.) Inflix to Reverse Polish // Not implemented Yet!
+ * Data Structures Implemented    : 1.) Heap
+ 				    2.) Priority Queue
  */
 
  // Including dependencies
@@ -75,26 +69,6 @@ struct subarray
 	int ub;
 	int sum;
 };
-
-struct Table
-{
-	int key;
-	char element[100];
-};
-
-struct Node
-{
-    int key;
-    struct Node *prev, *next;
-};
-
-struct TreeNode
-{
-    int key;
-    struct TreeNode* right;
-    struct TreeNode* left;
-};
-
 
 /*
  * Arguments: n(int)
@@ -716,232 +690,6 @@ subarray max_subarray_linear(int arr[], int n)
 	return res;
 }
 
-list_iterator create_doubly_linked_list(int key)
-{
-    list_iterator first = (list_iterator)malloc(sizeof(struct Node));
-    first->key = key;
-    first->prev = 0;
-    first->next = 0;
-    return first;
-}
-
-list_iterator insert_in_front_of_the_doubly_linked_list(list_iterator first, int key)
-{
-    list_iterator new_node = (list_iterator)malloc(sizeof(struct Node));
-    new_node->key = key;
-    new_node->next = first;
-    first->prev = new_node;
-    new_node->prev = 0;
-    return new_node;
-}
-
-list_iterator insert_in_end_of_the_doubly_linked_list(list_iterator last, int key)
-{
-    list_iterator new_node = (list_iterator)malloc(sizeof(struct Node));
-    new_node->key = key;
-    new_node->prev = last;
-    last->next = new_node;
-    new_node->next = 0;
-    return new_node;
-}
-
-list_iterator delete_from_the_front_of_the_doubly_linked_list(list_iterator first)
-{
-    if(first->next == 0){ free(first);return create_doubly_linked_list(-1); }
-    list_iterator second = first->next;
-    free(first);
-    second->prev = 0;
-    return second;
-}
-
-list_iterator delete_from_the_end_of_the_doubly_linked_list(list_iterator last)
-{
-    if(last->prev == 0){ free(last);return create_doubly_linked_list(-1); }
-    list_iterator previous = last->prev;
-    free(last);
-    previous->next = 0;
-    return previous;
-}
-
-list_iterator delete_from_the_doubly_linked_list(list_iterator first, size_type key)
-{
-    list_iterator it = first;
-    while(it != 0)
-    {
-        if(it->key == key){
-            if(it == first){ 
-                first = delete_from_the_front_of_the_doubly_linked_list(it);
-                return first;
-            }
-            if(it->next == 0){
-                delete_from_the_end_of_the_doubly_linked_list(it);
-                return first;
-            }
-            list_iterator temp1 = it->prev;
-            list_iterator temp2 = it->next;
-            temp1->next = it->next;
-            temp2->prev = it->prev;
-            free(it);
-            break;
-        }
-        it = it->next;
-    }
-    return first;
-}
-
-list_iterator search_from_start_in_the_doubly_linked_list(list_iterator first, int key)
-{
-    list_iterator current_node = first;
-    while(current_node != 0 && current_node->key != key) current_node = current_node->next;
-    if(current_node != 0) return current_node;
-    list_iterator temp = 0;
-    return temp;
-}
-
-list_iterator search_from_end_in_the_doubly_linked_list(list_iterator last, int key)
-{
-    list_iterator current_node = last;
-    while(current_node->key != key && current_node != 0) current_node = current_node->prev;
-    if(current_node != 0) return current_node;
-    list_iterator temp = 0;
-    return temp;
-}
-
-size_type hash_by_division_method(size_type key)
-{
-	return key%M;
-}
-
-size_type hash_by_multiplication_method(size_type key)
-{
-    unsigned long w = 4294967296;
-    return  ( ( (size_type)fmod((key*floor(PHI*w)),w) ) & ( 16384 - 1 ) );
-}
-
-size_type open_address_linear_probing(size_type key, size_type probe)
-{
-    return (hash_by_multiplication_method(key) + probe)%M;
-}
-
-size_type open_address_quadratic_probing(size_type key, size_type probe)
-{
-    return (hash_by_multiplication_method(key) + 4*probe + 5*probe*probe)%M;
-}
-
-size_type open_address_double_hashing(size_type key, size_type probe)
-{
-    return ( hash_by_multiplication_method(key) + probe*hash_by_division_method(key) )%M;
-}
-
-void insert_in_hash_table(list_iterator *table, size_type key)
-{
-    size_type hash = hash_by_multiplication_method(key);
-    if(key <= 0) return;
-    if(table[hash]->key == -1)
-    {
-        table[hash]->key = key;
-        table[hash]->next = 0;
-        table[hash]->prev = 0;
-        return;
-    }
-    table[hash] = insert_in_front_of_the_doubly_linked_list(table[hash], key);
-    return;
-}
-
-void delete_from_hash_table(list_iterator *table, size_type key)
-{
-    size_type hash = hash_by_multiplication_method(key);
-    table[hash] = delete_from_the_doubly_linked_list(table[hash], key);
-    return;
-}
-
-list_iterator search_in_hash_table(list_iterator *table, size_type key)
-{
-    size_type hash = hash_by_multiplication_method(key);
-    list_iterator element = search_from_start_in_the_doubly_linked_list(table[hash], key);
-    return element;
-}
-
-int insert_in_dat(iterator t, int key, char element[])
-{
-	if(key < 0 || key >= MAX) return 1;
-	else if(t[key].key != -1) return 2;
-	struct Table temp;
-    temp.key = key;
-    strcpy(temp.element, "");
-	t[key] = temp;
-	return 0;
-}
-
-int del_from_dat(iterator t, int key)
-{
-	if(key < 0 || key >= MAX) return 1;
-	t[key].key = -1;
-	strcpy(t[key].element, "");
-	return 0;
-}
-
-int search_in_dat(iterator t, int key)
-{
-	if(key < 0 || key >= MAX) return 0;
-	else if(t[key].key == -1) return 0;
-	return 1;
-}
-
-struct TreeNode *new_tree_node(int value)
-{
-    struct TreeNode* n = (struct TreeNode*)malloc(sizeof(struct TreeNode));
-    n->key = value;
-    n->left = NULL;
-    n->right = NULL;
-    return n;
-}
-
-struct TreeNode* insert_in_binary_tree(struct TreeNode* node, int key)
-{
-    if(node == NULL) return new_tree_node(key);
-    if(node->key == key) perror("key already present in the tree!");
-    if(key < node->key) node->left = insert_in_binary_tree(node->left, key);
-    else node->right = insert_in_binary_tree(node->right, key);
-    return node;
-}
-
-void inorder_transversal(struct TreeNode* node)
-{
-    if(node != NULL){
-        inorder_transversal(node->left);
-        printf("%d ", node->key);
-        inorder_transversal(node->right);
-    }
-}
-
-void preorder_transversal(struct TreeNode* node)
-{
-    if(node != NULL){
-        printf("%d ", node->key);
-        preorder_transversal(node->left);
-        preorder_transversal(node->right);
-    }
-}
-
-void postorder_transversal(struct TreeNode* node)
-{
-    if(node != NULL){
-        postorder_transversal(node->left);
-        postorder_transversal(node->right);
-        printf("%d ", node->key);
-    }
-}
-
-int search_in_binary_tree(struct TreeNode* node, int key)
-{
-    if(node == NULL) return 0;
-    if(key == node->key) return 1;
-    else if(key < node->key) return search_in_binary_tree(node->left, key);
-    else return search_in_binary_tree(node->right, key);
-}
-
-
 /*
  * A function to play around with the sorting algorithms present.
  */
@@ -983,116 +731,8 @@ void search_playground()
 	cout << "Linear Search: " << duration_cast<nanoseconds>(end - start).count() << " Answer: " << ind2 << endl;
 }
 
-void hash_tables_playground()
-{
-    list_iterator* table = (list_iterator*)malloc(M*sizeof(list_iterator));
-    for(int i=0;i<M;i++) table[i] = create_doubly_linked_list(-1);
-    for(int i=1;i<2*M;i++) insert_in_hash_table(table, i);
-    for(int i=1;i<2*M;i++){
-        list_iterator l = search_in_hash_table(table, i);
-        if(l != 0) printf("The key found is %d\n", l->key);
-        else{ printf("Key not found!\n"); }
-    }
-
-    clock_t start = clock();
-    for(size_type i=1;i<100000;i++)
-    {
-        hash_by_multiplication_method(i);
-    }
-    clock_t end = clock();
-    printf("Time taken by multiply method: %lfs\n", ((double) (end - start)) / CLOCKS_PER_SEC);
-    start = clock();
-    for(size_type i=1;i<100000;i++)
-    {
-        hash_by_division_method(i);
-    }
-    end = clock();
-    printf("Time taken by division method: %lfs\n", ((double) (end - start)) / CLOCKS_PER_SEC);
-
-}
-
-void doubly_linked_list_playground()
-{
-	list_iterator first = create_doubly_linked_list(30);
-    list_iterator last = first;
-    first = insert_in_front_of_the_doubly_linked_list(first, 20);
-    first = insert_in_front_of_the_doubly_linked_list(first, 10);
-    last = insert_in_end_of_the_doubly_linked_list(last, 40);
-    list_iterator it = first;
-    while(it){printf("%d ", it->key);it = it->next;}
-    printf("\n");
-    first = delete_from_the_front_of_the_doubly_linked_list(first);
-    it = first;
-    while(it){printf("%d ", it->key);it = it->next;}
-}
-
-void dat_playground()
-{
-	iterator slots = (iterator)malloc(MAX*sizeof(struct Table));
-	for(int i=0;i<MAX;i++){
-		slots[i].key = -1;
-		strcpy(slots[i].element,"");
-	}
-	int error_code = 0;
-	char command;
-	while(!error_code)
-	{
-		printf("Enter command: ");
-		fflush(stdout);
-		scanf("%c", &command);
-		fflush(stdin);
-		if(command == 'i'){
-			printf("Enter the key and correseponding string you want to store in the table: ");
-			int key;
-			char element[100];
-			scanf("%d%s", &key, element);
-			fflush(stdin);
-			error_code = insert_in_dat(slots, key, element);
-		}
-		else if(command == 'd'){
-			printf("Enter the key you want to delete: ");
-			int key;
-			scanf("%d", &key);
-			error_code = del_from_dat(slots, key);
-		}
-		else if(command == 's'){
-			printf("Enter the key you want to search: ");
-			int key;
-			scanf("%d", &key);
-			int success = search_in_dat(slots, key);
-			if(success) printf("The element present at %d is %s\n", key, slots[key].element);
-			else printf("Key not found!\n");
-		}
-		else if(command == 'q') break;
-	}
-	if(error_code == 1) printf("ERROR 1: Out of index access not allowed!\nTerminating Program...\n");
-	else if(error_code == 2) printf("ERROR 2: Entered key doesn't exist in the table!\nTerminating Program...\n");
-}
-
-void binary_trees_playground()
-{
-	struct TreeNode* root = NULL;
-    root = insert_in_binary_tree(root, 10);
-    insert_in_binary_tree(root, 70);
-    insert_in_binary_tree(root, 30);
-    insert_in_binary_tree(root, 50);
-    insert_in_binary_tree(root, 40);
-    insert_in_binary_tree(root, 20);
-    insert_in_binary_tree(root, 60);
-    inorder_transversal(root);
-    printf("\n");
-    preorder_transversal(root);
-}
-
 
 int main()
 {
-	// srand(time(0));
-	// int arr[200000], aux[200000];
-	// for (int i = 0; i < 200000; i++) arr[i] = nrand(10000);
-	// auto start = high_resolution_clock::now();
-	// counting_sort(arr, aux, 200000);
-	// auto end = high_resolution_clock::now();
-	// cout << duration_cast<milliseconds>(end - start).count() << endl;
-    hash_tables_playground();
+	search_playground();
 }
