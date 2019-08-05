@@ -37,14 +37,9 @@
 #include <string.h>
 #include <time.h>
 
-#define M 16385
-#define PHI 0.6180339887
 #define MAX 10000
 
 typedef size_t size_type;
-typedef struct Node* list_iterator;
-typedef struct Table* iterator;
-typedef const struct Table* const_iterator;
 
 // importing required functions
 using std::domain_error;
