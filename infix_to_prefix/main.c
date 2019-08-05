@@ -11,7 +11,7 @@ struct stack{
     int top;
     char s_content[MAX+1];
 
-}ss;
+};
 
 void PUSH(struct stack *s, char value)
 {
@@ -32,25 +32,37 @@ char POP(struct stack *s){
 
 int f(char a)
 {
-    if(isalpha(a))  return 3;
+    if(a=='(') return 9;
+    if(isalpha(a))  return 7;
+    if(a=='^')  return 6;
+      if(a=='*' || a=='/') return 3;
     if(a=='+' || a=='-') return 1;
-    if(a=='*' || a=='/') return 2;
-    if(a=='#') return 0;
+    if(a==')' || a=='#') return 0;
     return -1000;
+}
+
+int g(char a)
+{
+    if(isalpha(a))  return 8;
+    if(a=='^')  return 5;
+    if(a=='*' || a=='/') return 4;
+    if(a=='+' || a=='-') return 2;
+    if(a==')' || a=='#') return -1;
+    return 0;
 }
 
 int r(char a)
 {
     if(isalpha(a))  return 1;
-    if(a=='+' || a=='-' || a=='*' || a=='/') return -1;
+    if(a=='+' || a=='-' || a=='*' || a=='/' || a=='^') return -1;
     if(a=='#') return 0;
-    return -1000;
+    return -1;
 
 }
 
-void infix_to_postfix(char infix[])
+void infix_to_prefix(char infix[])
 {
-    char postfix[500];
+    char prefix[500];
     int rank=0;
 
     struct stack s = {-1,0};
@@ -60,12 +72,15 @@ void infix_to_postfix(char infix[])
 
     while(infix[i]!='#')
     {
-        while(f(s.s_content[s.top]) >= f(infix[i]))
+        while(g(s.s_content[s.top]) >= f(infix[i]))
         {
             char temp= POP(&s);
-            postfix[j++]=temp;
-            rank+= r(temp);
-            if(rank<1) perror("Invalid expression !!!");
+            if(temp!='(' && temp!=')')
+                {
+                    prefix[j++]=temp;
+                    rank+= r(temp);
+                }
+
 
         }
 
@@ -77,32 +92,33 @@ void infix_to_postfix(char infix[])
     {
 
         char temp= POP(&s);
-        postfix[j++]=temp;
-        rank += r(temp);
-        if(rank<1) perror("Invalid exp !!");
+        if(temp != '(' && temp != ')')
+        {
+             prefix[j++]=temp;
+             rank += r(temp);
+        }
+
     }
 
-    postfix[j]='\0';
+    prefix[j]='\0';
 
-
-     char postfix_final[100];
-     strcpy(postfix_final,"");
+    char prefix_final[100];
+     strcpy(prefix_final,"");
     int j2=0;
-    for(int i=strlen(postfix)-1;i>=0;i--)
+    for(int i=strlen(prefix)-1;i>=0;i--)
     {
-        postfix_final[j2]=postfix[i];
+        prefix_final[j2]=prefix[i];
         j2++;
     }
-    postfix_final[j2]='\0';
+    prefix_final[j2]='\0';
 
-    printf("Postfix expression is : ");
-    puts(postfix_final);
-
+    printf("Prefix expression is : ");
+    puts(prefix_final);
 }
 
 int main()
 {
-    printf("Enter the Infix : ");
+    printf("enter the expression :");
     char infix_0[100];
     gets(infix_0);
 
@@ -114,7 +130,8 @@ int main()
         j++;
     }
     infix[j]='#';
-    infix[j+1]='/0';
+    infix[j+1]='\0';
 
-    infix_to_postfix(infix);
+
+    infix_to_prefix(infix);
 }
