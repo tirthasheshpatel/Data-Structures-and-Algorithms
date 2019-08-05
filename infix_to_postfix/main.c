@@ -11,7 +11,7 @@ struct stack{
     int top;
     char s_content[MAX+1];
 
-}ss;
+};
 
 void PUSH(struct stack *s, char value)
 {
@@ -32,19 +32,31 @@ char POP(struct stack *s){
 
 int f(char a)
 {
-    if(isalpha(a))  return 3;
+    if(a=='(') return 9;
+    if(isalpha(a))  return 7;
+    if(a=='^')  return 6;
+      if(a=='*' || a=='/') return 3;
     if(a=='+' || a=='-') return 1;
-    if(a=='*' || a=='/') return 2;
-    if(a=='#') return 0;
+    if(a==')' || a=='#') return 0;
     return -1000;
+}
+
+int g(char a)
+{
+    if(isalpha(a))  return 8;
+    if(a=='^')  return 5;
+    if(a=='*' || a=='/') return 4;
+    if(a=='+' || a=='-') return 2;
+    if(a==')' || a=='#') return -1;
+    return 0;
 }
 
 int r(char a)
 {
     if(isalpha(a))  return 1;
-    if(a=='+' || a=='-' || a=='*' || a=='/') return -1;
+    if(a=='+' || a=='-' || a=='*' || a=='/' || a=='^') return -1;
     if(a=='#') return 0;
-    return -1000;
+    return -1;
 
 }
 
@@ -60,12 +72,15 @@ void infix_to_postfix(char infix[])
 
     while(infix[i]!='#')
     {
-        while(f(s.s_content[s.top]) >= f(infix[i]))
+        while(g(s.s_content[s.top]) >= f(infix[i]))
         {
             char temp= POP(&s);
-            postfix[j++]=temp;
-            rank+= r(temp);
-            if(rank<1) perror("Invalid expression !!!");
+            if(temp!='(' && temp!=')')
+                {
+                    postfix[j++]=temp;
+                    rank+= r(temp);
+                }
+
 
         }
 
@@ -77,9 +92,12 @@ void infix_to_postfix(char infix[])
     {
 
         char temp= POP(&s);
-        postfix[j++]=temp;
-        rank += r(temp);
-        if(rank<1) perror("Invalid exp !!");
+        if(temp != '(' && temp != ')')
+        {
+             postfix[j++]=temp;
+             rank += r(temp);
+        }
+
     }
 
     postfix[j]='\0';
@@ -90,8 +108,9 @@ void infix_to_postfix(char infix[])
 
 int main()
 {
-    printf("Enter the Infix (end the epression with '#')  : ");
+    printf("Enter the expression :");
     char infix[100];
     gets(infix);
+    strcat(infix, "#");
     infix_to_postfix(infix);
 }
