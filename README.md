@@ -35,7 +35,7 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 <p> All the Data Structures have been implemented in C. The implemented Data Structures are:
   <ol>
     <li> Stack (fully documented) (C implementation: stack_as_static_array.c, C++ implementtation: stack/stack/headers/Stack.h)</li>
-    <li> Queue (undocumented) (C implementation: -, C++ implementtation: queue/queue/headers/Queue.h)</li>
+    <li> Queue (documented) (C implementation: queue_using_static_array.c, C++ implementtation: queue/queue/headers/Queue.h)</li>
     <li> Heap (documented) (location: Algorithms.cpp, line no:[168-342])</li>
     <li> Priority Queue (documented) (location: Algorithms.cpp, line no:[168-342]) </li>
     <li> Binary Search Trees (undocumented) (location: binary_tree.c)</li>
