@@ -308,9 +308,9 @@ size_type hash_by_multiplication_method(size_type key)
     // => `l = key * s`
     // Now, we have `l = w * r1 + r0` where
     // `r0` is the fractional part of `l`.
-    // We extract 14 lowest order bits of `r0` 
+    // We extract 14 most significant bits of `r0` 
     // to get our 14 bit hash key.
-    return  ( ( (size_type)fmod((key*floor(PHI*w)),w) ) & ( 16384 - 1 ) );
+    return  ( ( ( (size_type)fmod((key*floor(PHI*w)),w) ) >> (32-14)) & ( 16384 - 1 ) );
 }
 
 // A function to find Hash Code of the key
@@ -440,13 +440,6 @@ list_iterator search_in_hash_table(list_iterator *table, size_type key)
 
 int main()
 {
-    list_iterator* table = (list_iterator*)malloc(M*sizeof(list_iterator));
-    for(int i=0;i<M;i++) table[i] = create_doubly_linked_list(-1);
-    for(int i=1;i<2*M;i++) insert_in_hash_table(table, i);
-    for(int i=1;i<2*M;i++){
-        list_iterator l = search_in_hash_table(table, i);
-        if(l != 0) printf("The key found is %d\n", l->key);
-        else{ printf("Key not found!\n");return 0;}
-    }
-
+    int key = 123456;
+    printf("%lu\n", hash_by_multiplication_method(key));
 }
