@@ -22,7 +22,7 @@ int cut_rod_top_down(int n, int rev[])
     return r;
 }
 
-int memoized_cut_rod(int n, int rev[], int memo[])
+int memoized_cut_rod_top_down(int n, int rev[], int memo[])
 {
     callbacks++;
     if(n == 0) return 0;
@@ -33,10 +33,27 @@ int memoized_cut_rod(int n, int rev[], int memo[])
     int r = INT_MIN;
     for(int i=0;i<n;i++)
     {
-        r = max(r, rev[i] + memoized_cut_rod(n-i-1, rev, memo));
+        r = max(r, rev[i] + memoized_cut_rod_top_down(n-i-1, rev, memo));
     }
     memo[n-1] = r;
     return r;
+}
+
+int memoized_cut_rod_bottom_up(int n, int rev[])
+{
+    int memo[n];
+    memo[0] = 0;
+    int r;
+    for(int i=0;i<n;i++)
+    {
+        r = INT_MIN;
+        for(int j=0;j<i;j++)
+        {
+            r = max(r, rev[j] + memo[i-j]);
+        }
+        memo[i] = r;
+    }
+    return memo[n];
 }
 
 int main()
@@ -50,6 +67,8 @@ int main()
 
     int memo[10];
     for(int i=0;i<10;i++) memo[i] = -1;
-    printf("%d\n", memoized_cut_rod(n,revenue, memo));
+    printf("%d\n", memoized_cut_rod_top_down(n,revenue, memo));
     printf("%d\n", callbacks);
+
+    printf("%d\n", memoized_cut_rod_bottom_up(n,revenue));
 }
