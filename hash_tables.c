@@ -1,7 +1,6 @@
 /*
  * @author: tirthasheshpatel
  * @e-mail: tirthasheshpatel@gmail.com
- * @github: tirthasheshpatel@github.com
  * Summary: Implemented hash tables and resolved
  *          collisions using (primarily) chaining
  *          and open addressing.
@@ -310,7 +309,7 @@ size_type hash_by_multiplication_method(size_type key)
     // `r0` is the fractional part of `l`.
     // We extract 14 most significant bits of `r0` 
     // to get our 14 bit hash key.
-    return  ( ( ( (size_type)fmod((key*floor(PHI*w)),w) ) >> (32-14)) & ( 16384 - 1 ) );
+    return  ( ( ( (size_type)fmod((key*floor(PHI*w)),w) ) >> (32-14) ) );
 }
 
 // A function to find Hash Code of the key
