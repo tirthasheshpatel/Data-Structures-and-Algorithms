@@ -1,3 +1,4 @@
+
 /*
  * @author: tirthasheshpatel@gmail.com
  * Implement a program to find n'th term
@@ -25,8 +26,22 @@ int fibo(int n, int memo[])
     return result; // return the result.
 }
 
+int fibo_bottom_up(int n)
+{
+    if(n == 1 || n == 2) return 1;
+    int memo[n+1];
+    memo[0] = 0;
+    memo[1] = 1;
+    for(int i=1;i<n;i++)
+    {
+        memo[i+1] += memo[i] + memo[i-1]; 
+    }
+    return memo[n];
+}
+
 int main()
 {
     int memo[10] = {0};
     printf("%d\n", fibo(10, memo));
+    printf("%d\n", fibo_bottom_up(10));
 }
