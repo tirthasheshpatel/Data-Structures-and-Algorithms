@@ -45,5 +45,12 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
   </ol>
 </p>
 
+## Dynamic Programming
+<p> Currently under devlopment, some of the Dynamic and Greedy Algoruthms have been implemented in this section. The implementations include: </p>
+<ol> 
+  <li> Fibonacci Series </li>
+  <li> Rod Cutting Problem </li>
+</ol>
+
 ## Thank you!
 <small> Please read the contributing guidelines if you wish to contribute!</small>
