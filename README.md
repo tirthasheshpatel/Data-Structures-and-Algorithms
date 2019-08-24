@@ -37,7 +37,8 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
     <li> Stack (fully documented) (C implementation: stack_as_static_array.c, C++ implementtation: stack/stack/headers/Stack.h)</li>
     <li> Queue (documented) (C implementation: queue_using_static_array.c, C++ implementtation: queue/queue/headers/Queue.h)</li>
     <li> Heap (documented) (location: Algorithms.cpp, line no:[168-342])</li>
-    <li> Priority Queue (documented) (location: Algorithms.cpp, line no:[168-342]) </li>
+    <li> Priority Queue (documented) (C implementation: priority_queue.c, C++ implementation: Algorithms.cpp, line no:[168-342]) </li>
+    <li> Circular Queue (undocumented) (location: circular_queue_uaing_static_array.c) </li>
     <li> Binary Search Trees (undocumented) (location: binary_tree.c)</li>
     <li> Doubly Linked List (fully documented) (location: doubly_linked_list.c)</li>
     <li> Direct Address Tables (undocumented) (location: direct_address_tables.c)</li>
