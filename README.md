@@ -50,6 +50,7 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 <ol> 
   <li> Fibonacci Series </li>
   <li> Rod Cutting Problem </li>
+  <li> Matrix Chain Multiplication Problem </li>
 </ol>
 
 ## Thank you!
