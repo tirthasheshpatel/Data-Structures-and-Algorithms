@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include <limits.h>
 
+void print_param_of_matrix_chain(int (*s)[6],int i, int j, int n)
+{
+    if(i == j) printf(" A[%d] ", i+1);
+    else{ 
+        printf("( ");
+        print_param_of_matrix_chain(s, i, s[i][j], n);
+        print_param_of_matrix_chain(s, s[i][j]+1, j, n);
+        printf(" )");
+    }
+}
+
 void matrix_chain_multiplication(int (*shape)[2], int n)
 {
     int nb_mul[n][n],div[n][n],temp=0;
@@ -25,30 +36,23 @@ void matrix_chain_multiplication(int (*shape)[2], int n)
                 if(temp<nb_mul[i][j])
                 {
                     nb_mul[i][j] = temp;
-                    div[i][j] = k+1;
+                    div[i][j] = k;
                 }
             }
         }
     }
-    printf("Multiplication Matrix: \n");
+    printf("Multiplication Matrix: [start][end][cut]\n");
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++)
+        for(int j=i;j<n;j++)
         {
-            printf("%d ", nb_mul[i][j]);
+            printf("[%d][%d][%d]%d\n", i+1, j+1, div[i][j]+1, nb_mul[i][j]);
         }
-        printf("\n");
     }
-    printf("Number of Divisions: \n");
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            printf("%d ", div[i][j]);
-        }
-        printf("\n");
-    }
+    printf("The optimal paranthesization is: ");
+    print_param_of_matrix_chain(div,0,5,6);
 }
+
 
 int main()
 {
@@ -61,7 +65,7 @@ int main()
         {10,20},
         {20,25}
     };
-    matrix_chain_multiplication(shapes, n);
+    matrix_chain_multiplication(shapes, 6);
 
 
 
