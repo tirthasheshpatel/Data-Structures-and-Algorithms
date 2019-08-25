@@ -46,13 +46,68 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
   </ol>
 </p>
 
-## Dynamic Programming
+<h1> Dynamic Programming </h1>
+
 <p> Currently under devlopment, some of the Dynamic and Greedy Algoruthms have been implemented in this section. The implementations include: </p>
 <ol> 
   <li> Fibonacci Series </li>
   <li> Rod Cutting Problem </li>
   <li> Matrix Chain Multiplication Problem </li>
 </ol>
+
+<h3>When does Dynamic Algorithm apply?</h3>
+<p>
+<ol>
+<li> optimal substructure.
+    <ul><li>Property of independence holds.</li>
+    <li>Property of linearity holds.</li>
+    <li>Choices hold both for subproblems and problems.</li></ul>
+</li>
+<li> overlapping subproblems.</li>
+</ol>
+</p>
+
+<h3>Elements of Dynamic Programming:</h3>
+<p>
+<ol> 
+<li> Optimal Substucture.</li>
+<li> Overlapping Subproblems.</li>
+<li> Reconstructing a optimal solution.</li>
+<li> Memoization for top-down approach.</li>
+</ol>
+</p>
+
+
+<h3>Attack plan:</h3>
+<p>
+<ol>
+<li> Characterize the stucture of an optimum solution.</li>
+<li> Recursively define the value of an optimum solution.</li>
+<li> Compute the value of optimum solution.</li>
+<li> Construct an optimal solution from computed information.</li>
+</ol>
+</p>
+
+<h3>Examples:</h3>
+<p> 
+<ol>
+<li> Rod cutting Problem.</li>
+<li> Matrix Chain Multiplication.</li>
+<li> Shortest Path in unweighed directed graph.</li>
+<li> Longest Common Sub-Sequence.</li>
+</ol>
+</p>
+
+
+<h3>Where it doesn't apply:</h3>
+<p>
+<ol>
+<li> Longest Path in unweighed directed graph.</li>
+<li> Rod cutting with limit of cuts.</li>
+</ol>
+</p>
+
+
 
 ## Thank you!
 <small> Please read the contributing guidelines if you wish to contribute!</small>
