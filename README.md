@@ -53,6 +53,7 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
   <li> Fibonacci Series </li>
   <li> Rod Cutting Problem </li>
   <li> Matrix Chain Multiplication Problem </li>
+  <li> Longest Common Subsequence Problem </li>
 </ol>
 
 <h3>When does Dynamic Algorithm apply?</h3>
