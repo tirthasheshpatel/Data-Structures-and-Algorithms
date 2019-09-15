@@ -37,7 +37,7 @@ list_iterator create_doubly_linked_list(int key)
     list_iterator first = (list_iterator)malloc(sizeof(struct Node));
     // Step 2: Initialize key as provided by the user.
     first->key = key;
-    // Step 3: First element in the list so doesn't 
+    // Step 3: First element in the list so it doesn't 
     // have next and prev elements.
     first->prev = 0;
     first->next = 0;
@@ -245,7 +245,7 @@ list_iterator search_from_end_in_the_doubly_linked_list(list_iterator last, int 
 int main()
 {
     // Creating a doubly linked list.
-    list_iterator first = create_doubly_linked_list();
+    list_iterator first = create_doubly_linked_list(10);
     
     // Insert 10 20 and 30 in the front of the doubly linked list.
     first = insert_in_front_of_the_doubly_linked_list(first, 10);
