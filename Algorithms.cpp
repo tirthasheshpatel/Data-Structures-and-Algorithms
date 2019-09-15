@@ -37,7 +37,7 @@
 #include <string.h>
 #include <time.h>
 
-#define MAX 10000
+constexpr auto MAX = 10000;
 
 typedef size_t size_type;
 
