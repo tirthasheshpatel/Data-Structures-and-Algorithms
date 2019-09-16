@@ -25,8 +25,8 @@ void BFS(vertex_iterator source)
         {
             if(temp->key->color == 'W')
             {
-                print("New vertex found!\n");
-                temp->key->color == 'G';
+                // print("New vertex found at %x!\n", temp->key);
+                temp->key->color = 'G';
                 temp->key->depth = u->depth + 1;
                 temp->key->parent = u;
                 enqueue(q, temp->key);
@@ -34,7 +34,7 @@ void BFS(vertex_iterator source)
             temp = temp->next;
         }
         u->color = 'B';
-        // print("<Node: value->%d;color->%c;depth->%d;>\n", u->value, u->color, u->depth);
+        print("Node with value %d fount at depth %d\n", u->value, u->depth);
     }
 }
 
@@ -71,8 +71,9 @@ int main()
         {
             scan("%d", &ind);
             if(ind == -1) break;
+
             if(templ==0) templ = create_doubly_linked_list(graph[ind]);
-            templ = insert_in_front_of_the_doubly_linked_list(templ, graph[ind]);
+            else templ = insert_in_front_of_the_doubly_linked_list(templ, graph[ind]);
         }
         graph[i]->adj_list = templ;
         fflush(stdin);
