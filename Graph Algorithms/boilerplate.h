@@ -114,7 +114,7 @@ void initalize_queue(Queue* q, int size)
     {
         q->que[i] = 0;
     }
-    printf("Queue Initialized!!\n\n");
+    // printf("Queue Initialized!!\n\n");
 }
 
 void reintialize_in_queue(Queue* q)
