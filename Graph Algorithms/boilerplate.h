@@ -1,6 +1,13 @@
+/*
+ * author: @tirthasheshpatel
+ * Base code for all Graph Algorithms
+ * Contains implementation of: Queue, Stack, Linked Lists.
+ */
+
 #ifndef GUARD_BOILERPLATE_H
 #define GUARD_BOILERPLATE_H
 
+// Importing dependencies
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
