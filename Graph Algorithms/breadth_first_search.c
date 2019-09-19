@@ -38,7 +38,7 @@ void BFS(vertex_iterator source)
     }
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     int nb_vertices;
     print("Enter the number of vertices in your graph: ");
