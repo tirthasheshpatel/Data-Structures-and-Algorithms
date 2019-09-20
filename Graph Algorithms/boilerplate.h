@@ -40,6 +40,8 @@ typedef struct vertex
     int value;
     char color;
     int depth;
+    int start;
+    int end;
     vertex_iterator parent;
     list_iterator adj_list;
 }Vertex;
@@ -52,6 +54,60 @@ typedef struct queue
     int rear;
     vertex_iterator* que;
 }Queue;
+
+typedef struct stack
+{
+    int empty;
+    list_iterator head;
+    list_iterator tail;
+}Stack;
+
+void init_stack(Stack* s)
+{
+    s->empty = 1;
+    s->head = s->tail = 0;
+}
+
+void push(Stack* s, vertex_iterator key)
+{
+    if(s->empty == 1)
+    {
+        s->empty = 0;
+        s->head = (list_iterator)malloc(sizeof(struct Node));
+        s->head->key = key;
+        s->head->next = 0;
+        s->head->prev = 0;
+        s->tail = s->head;
+    }
+    else
+    {
+        s->tail->next = (list_iterator)malloc(sizeof(struct Node));
+        s->tail->next->key = key;
+        s->tail->next->next = 0;
+        s->tail->next->prev = s->tail;
+        s->tail = s->tail->next;
+    }
+}
+
+vertex_iterator pop(Stack* s)
+{
+    if(s->empty == 1)
+    {
+        printf("Stack empty!");
+        exit(1);
+    }
+    else if(s->head == s->tail)
+    {
+        vertex_iterator element = s->head->key;
+        s->empty = 1;
+        s->head = s->tail = 0;
+        return element;
+    }
+    vertex_iterator element = s->tail->key;
+    s->tail = s->tail->prev;
+    s->tail->next = 0;
+    return element;
+}
 
 
 // A function that creates and initializes the
