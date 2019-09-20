@@ -17,11 +17,7 @@ void BFS(vertex_iterator source)
     {
         vertex_iterator u = dequeue(q);
         list_iterator temp = u->adj_list;
-        if(temp == 0)
-        {
-            // print("<Leaf Node: %d>\n", u->value);
-        }
-        else while(temp != 0)
+        while(temp != 0)
         {
             if(temp->key->color == 'W')
             {
@@ -58,6 +54,8 @@ int main(int argc, char *argv[])
         graph[i]->depth = -1;
         graph[i]->parent = 0;
         graph[i]->adj_list = 0;
+        graph[i]->end = -1;
+        graph[i]->start = -1;
         // print("Vertex added to graph\n");
     }
 
