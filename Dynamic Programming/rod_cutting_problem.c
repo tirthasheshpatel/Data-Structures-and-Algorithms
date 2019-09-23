@@ -3,20 +3,15 @@
 #include <limits.h>
 #include <math.h>
 
-typedef struct pair Pair;
+#define max(a,b) (((a) > (b)) ? (a) : (b))
 
-struct pair
+typedef struct pair
 {
     int x;
     int y;
-};
+}Pair;
 
 int callbacks = 0;
-
-int max(int num1, int num2)
-{
-    return (num1>num2)?num1:num2;
-}
 
 int cut_rod_top_down(int n, int rev[])
 {
