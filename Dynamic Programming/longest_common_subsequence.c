@@ -31,13 +31,20 @@ void LCS(char X[], char Y[])
             }
         }
     }
+    printf("\n");
+    printf("  - ");
+    for(int i=0;i<n;i++) printf("%c ", Y[i]);
+    printf("\n");
     for(int i=0;i<m;i++)
     {
+        printf("  ");
         for(int j=0;j<n;j++)
         {
             printf("%c ", b[i][j]);
         }
         printf("\n");
+        if(i == 0) printf("- "); 
+        else printf("%c ", X[i-1]);
         for(int j=0;j<n;j++)
         {
             printf("%d ", c[i][j]);
@@ -48,7 +55,7 @@ void LCS(char X[], char Y[])
 
 int main()
 {
-    char A[] = "ABCBDAB";
-    char B[] = "BDCABA";
+    char A[] = "character";
+    char B[] = "retcarahc";
     LCS(A,B);
 }
