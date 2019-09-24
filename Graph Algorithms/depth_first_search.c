@@ -7,6 +7,7 @@
 
 void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
 {
+    // graph = 1->2->3->4->5, source = 1
     int currTime = 0, explored = 0;
     Stack* s = (Stack*)malloc(sizeof(Stack));;
     init_stack(s);
@@ -21,19 +22,21 @@ void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
             list_iterator temp = v->adj_list;
             while(temp != 0)
             {
+                currTime++;
                 if(temp->key->color == 'W')
                 {
-                    temp->key->start = currTime++;
+                    temp->key->start = currTime;
                     temp->key->parent = v;
                     temp->key->color = 'G';
                     push(s, temp->key);
                 }
                 temp = temp->next;
             }
-            v->end = currTime++;
+            v->end = ++currTime;
             v->color = 'B';
             print("Node with value %d fount at time %d and its exploration ended at time %d\n", v->value, v->start, v->end);
         }
+        printf("Stack emptied!");
 
         explored = 1;
         for(int i=0;i<nb_vertices;i++)
@@ -45,7 +48,7 @@ void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
                 break;
             }
         }
-        
+
         if(explored == 0) continue;
         free(s);
         break;
