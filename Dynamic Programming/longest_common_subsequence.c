@@ -51,11 +51,31 @@ void LCS(char X[], char Y[])
         }
         printf("\n");
     }
+    printf("\n");
+    char lcs[c[m-1][n-1]+1];
+    int i=m-1, j=n-1, k=c[m-1][n-1]-1;
+    while(i!=0 && j!=0)
+    {
+        if(X[i-1] == Y[j-1])
+        {
+            lcs[k] = X[i-1];
+            k--;
+            i--;
+            j--;
+        }
+        else if(c[i-1][j] >= c[i][j-1])
+        {
+            i--;
+        }
+        else j--;
+    }
+    lcs[c[m-1][n-1]] = '\0';
+    printf("The lcs of %s and %s is %s.", X, Y, lcs);
 }
 
 int main()
 {
-    char A[] = "character";
-    char B[] = "retcarahc";
+    char A[] = "tirthasheshpatel";
+    char B[] = "letaphsehsahtrit";
     LCS(A,B);
 }
