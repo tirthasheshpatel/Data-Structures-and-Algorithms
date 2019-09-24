@@ -19,6 +19,12 @@ void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
         while(s->empty != 1)
         {
             vertex_iterator v = pop(s);
+            if(v->color == 'B')
+            {
+                v->end = ++currTime;
+                print("Node with value %d fount at time %d and its exploration ended at time %d\n", v->value, v->start, v->end);
+            }
+            else push(s, v);
             list_iterator temp = v->adj_list;
             while(temp != 0)
             {
@@ -32,9 +38,7 @@ void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
                 }
                 temp = temp->next;
             }
-            v->end = ++currTime;
             v->color = 'B';
-            print("Node with value %d fount at time %d and its exploration ended at time %d\n", v->value, v->start, v->end);
         }
         printf("Stack emptied!");
 
