@@ -9,7 +9,7 @@ void DFS(vertex_iterator* graph, int nb_vertices, vertex_iterator source)
 {
     // graph = 1->2->3->4->5, source = 1
     int currTime = 0, explored = 0;
-    Stack* s = (Stack*)malloc(sizeof(Stack));;
+    Stack* s = (Stack*)malloc(sizeof(Stack));
     init_stack(s);
     while(1)
     {
