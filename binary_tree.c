@@ -10,6 +10,12 @@ struct node
     tree_iterator parent, left, right;
 };
 
+int totalNodesInTree(tree_iterator root)
+{
+    if(root == 0) return 0;
+    return totalNodesInTree(root->left) + totalNodesInTree(root->right) + 1;
+}
+
 tree_iterator create(int key)
 {
     tree_iterator root = (tree_iterator)malloc(sizeof(Node));
@@ -26,7 +32,12 @@ tree_iterator insert(int key, tree_iterator root)
     if(root==0) return root;
     while(1)
     {
-        if(key < it->key){
+        if(key == it->key)
+        {
+            printf("Node with same value exists!\n\nTerminating Program...\n\n");
+            exit(1);
+        }
+        else if(key < it->key){
             if(it->left == 0) break;
             it = it->left;
         }
@@ -53,20 +64,20 @@ void inorder(tree_iterator root)
     inorder(root->right);
 }
 
-void preorder(tree_iterator root)
-{
-    if(root==0) return;
-    preorder(root->left);
-    preorder(root->right);
-    printf("%d ", root->key);
-}
-
 void postorder(tree_iterator root)
 {
     if(root==0) return;
-    printf("%d ", root->key);
     postorder(root->left);
     postorder(root->right);
+    printf("%d ", root->key);
+}
+
+void preorder(tree_iterator root)
+{
+    if(root==0) return;
+    printf("%d ", root->key);
+    preorder(root->left);
+    preorder(root->right);
 }
 
 int main()
@@ -77,5 +88,12 @@ int main()
     root = insert(1,root);
     root = insert(8,root);
     root = insert(6,root);
+    printf("\nPreorder: ");
+    preorder(root);
+    printf("\nInorder: ");
     inorder(root);
+    printf("\nPostorder: ");
+    postorder(root);
+    int nb_nodes = totalNodesInTree(root);
+    printf("\nTotal nodes: %d\n", nb_nodes);
 }
