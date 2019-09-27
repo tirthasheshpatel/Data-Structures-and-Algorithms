@@ -296,7 +296,7 @@ size_type hash_by_multiplication_method(size_type key)
     // we are going to multiply two 32 bit integers
     // to get a 64 bit long integer. Using 64 bit 
     // integer may lead to possible loss of data.
-    unsigned long w = 4294967296; // Bit-width w = 2^32
+    long long w = 4294967296; // Bit-width w = 2^32
 
     // Now, we have a constant A = PHI, that we 
     // need to convert in the form ` s / w `
