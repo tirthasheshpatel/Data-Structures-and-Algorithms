@@ -10,5 +10,6 @@ int gcd(int m, int n)
 
 int main()
 {
-    
+    int i = gcd(10,20);
+    printf("%d", i);
 }
