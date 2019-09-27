@@ -41,7 +41,7 @@ void matrix_chain_multiplication(int (*shape)[2], int n)
             }
         }
     }
-    printf("Multiplication Matrix: [start][end][cut]\n");
+    printf("Multiplication Matrix: [start][end][cut]nb_mul\n");
     for(int i=0;i<n;i++)
     {
         for(int j=i;j<n;j++)
