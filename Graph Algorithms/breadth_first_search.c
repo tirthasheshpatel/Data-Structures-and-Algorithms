@@ -8,7 +8,7 @@
 void BFS(vertex_iterator source)
 {
     Queue* q = (Queue*)malloc(sizeof(Queue));
-    initalize_queue(q, 1000);
+    initalize_queue(q, 10);
     source->color = 'G';
     source->depth = 0;
     source->parent = 0;
