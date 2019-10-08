@@ -7,7 +7,8 @@
 
 #define MAX 65535
 
-struct stack{
+struct stack
+{
     int top;
     char s_content[MAX+1];
 
@@ -21,8 +22,8 @@ void PUSH(struct stack *s, char value)
 
 }
 
-char POP(struct stack *s){
-
+char POP(struct stack *s)
+{
     if(s->top==-1)   perror("Underflow !!!");
     char element = s->s_content[s->top];
     s->s_content[s->top]=0;
@@ -35,7 +36,7 @@ int f(char a)
     if(a=='(') return 9;
     if(isalpha(a))  return 7;
     if(a=='^')  return 6;
-      if(a=='*' || a=='/') return 3;
+    if(a=='*' || a=='/') return 3;
     if(a=='+' || a=='-') return 1;
     if(a==')' || a=='#') return 0;
     return -1000;
@@ -76,12 +77,10 @@ void infix_to_prefix(char infix[])
         {
             char temp= POP(&s);
             if(temp!='(' && temp!=')')
-                {
-                    prefix[j++]=temp;
-                    rank+= r(temp);
-                }
-
-
+            {
+                prefix[j++]=temp;
+                rank+= r(temp);
+            }
         }
 
     PUSH(&s,infix[i++]);
@@ -103,7 +102,7 @@ void infix_to_prefix(char infix[])
     prefix[j]='\0';
 
     char prefix_final[100];
-     strcpy(prefix_final,"");
+    strcpy(prefix_final,"");
     int j2=0;
     for(int i=strlen(prefix)-1;i>=0;i--)
     {
@@ -126,7 +125,9 @@ int main()
     int j=0;
     for(int i=strlen(infix_0)-1;i>=0;i--)
     {
-        infix[j]=infix_0[i];
+        if(infix_0[i] == '(') infix[j] = ')';
+        else if(infix_0[i] == ')') infix[j] = '(';
+        else infix[j]=infix_0[i];
         j++;
     }
     infix[j]='#';
