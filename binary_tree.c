@@ -56,6 +56,67 @@ tree_iterator insert(int key, tree_iterator root)
     return root;
 }
 
+tree_iterator minValueRoot(tree_iterator root)
+{
+    if(0 == root) return root;
+    if(0 == root->left) return root;
+    return minValueRoot(root->left);
+}
+
+tree_iterator delete(int key, tree_iterator root)
+{
+    if(0 == root) return root;
+    if(key < root->key) //the key is in the left branch
+    {
+        if(0 == root->left)
+        {
+            printf("Node with %d value dont exists!\n\nTerminating Program...\n\n", key);
+            exit(1);
+        }
+        root->left = delete(key, root->left);
+        return root;
+    }
+    else if(key > root->key) //the key is in the right branch
+    {
+        if(0 == root->right)
+        {
+            printf("Node with %d value dont exists!\n\nTerminating Program...\n\n", key);
+            exit(1);
+        }
+        root->right = delete(key, root->right);
+        return root;
+    }
+    else //the root has key
+    {
+        if(0 == root->left && 0 == root->right) //has no child
+        {
+            free(root);
+            return 0;
+        }
+        else if(0 == root->right) //has one child(left)
+        {
+            tree_iterator temp_node = root->left;
+            temp_node->parent = root->parent;
+            free(root);
+            return temp_node;
+        }
+        else if(0 == root->left) //has one child(right)
+        {
+            tree_iterator temp_node = root->right;
+            temp_node->parent = root->parent;
+            free(root);
+            return temp_node;
+        }
+        else //has two child
+        {
+            tree_iterator mvr = minValueRoot(root->right);
+				    root->key = mvr->key;
+				    root->right = delete(mvr->key, root->right);
+        }
+    }
+    return root;
+}
+
 void inorder(tree_iterator root)
 {
     if(root==0) return;
@@ -88,6 +149,8 @@ int main()
     root = insert(1,root);
     root = insert(8,root);
     root = insert(6,root);
+    root = delete(5,root);
+
     printf("\nPreorder: ");
     preorder(root);
     printf("\nInorder: ");
@@ -97,3 +160,4 @@ int main()
     int nb_nodes = totalNodesInTree(root);
     printf("\nTotal nodes: %d\n", nb_nodes);
 }
+
