@@ -141,6 +141,19 @@ void preorder(tree_iterator root)
     preorder(root->right);
 }
 
+void printTree(tree_iterator root, int space)
+{
+    if(0 == root) return;
+    printTree(root->right, space+4); //for indent we add space by 4
+    printf("\n");
+    for(int s=0; s<space; s++)
+    {
+        printf(" ");
+    }
+    printf("%d", root->key);
+    printTree(root->left, space+4);
+}
+
 int main()
 {
     tree_iterator root = create(10);
@@ -151,6 +164,8 @@ int main()
     root = insert(6,root);
     root = delete(5,root);
 
+    printf("Tree shape:\n");
+    printTree(root, 0);
     printf("\nPreorder: ");
     preorder(root);
     printf("\nInorder: ");
