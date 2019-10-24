@@ -110,5 +110,5 @@ Minimum utilities and libraries are used in case the targeted audience ins't fam
 
 
 
-## Thank you!
+## Thanking you!
 <small> Please read the contributing guidelines if you wish to contribute!</small>
