@@ -12,7 +12,7 @@ struct node
 
 int totalNodesInTree(tree_iterator root)
 {
-    if(root == 0) return 0;
+    if(root == NULL) return 0;
     return totalNodesInTree(root->left) + totalNodesInTree(root->right) + 1;
 }
 
@@ -175,4 +175,3 @@ int main()
     int nb_nodes = totalNodesInTree(root);
     printf("\nTotal nodes: %d\n", nb_nodes);
 }
-

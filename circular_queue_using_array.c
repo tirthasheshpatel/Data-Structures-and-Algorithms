@@ -38,6 +38,7 @@ int delete(struct queue *q)
         printf("\nQueue Underflow!");
         exit(1);
     }
+    
     else
     {
         int ele;

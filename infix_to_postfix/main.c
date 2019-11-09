@@ -17,7 +17,7 @@ void PUSH(struct stack *s, char value)
 {
     if(s->top==MAX)  perror("Overflow");
     s->top++;
-        s->s_content[s->top]=value;
+    s->s_content[s->top]=value;
 
 }
 
@@ -35,7 +35,7 @@ int f(char a)
     if(a=='(') return 9;
     if(isalpha(a))  return 7;
     if(a=='^')  return 6;
-      if(a=='*' || a=='/') return 3;
+    if(a=='*' || a=='/') return 3;
     if(a=='+' || a=='-') return 1;
     if(a==')' || a=='#') return 0;
     return -1000;
