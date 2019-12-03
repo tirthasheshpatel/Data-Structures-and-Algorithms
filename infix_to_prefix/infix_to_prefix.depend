@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1564846262 source:c:\users\admin\desktop\mystuff\college stuffs\dsa c-programme\infix_to_prefix\main.c
-	<stdio.h>
-	<errno.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-
